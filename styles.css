@@ -2708,3 +2708,424 @@ footer {
     justify-self: start;
   }
 }
+/* ========================================
+   INTERACTIVE CLUB FLOORPLAN
+======================================== */
+
+.club-map {
+  margin-bottom: 70px;
+}
+
+.club-map-heading {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 28px;
+
+  margin-bottom: 28px;
+}
+
+.club-map-heading .section-kicker {
+  grid-column: 1 / -1;
+  margin-bottom: -10px;
+}
+
+.club-map-heading h3 {
+  margin: 0;
+
+  font-size: clamp(2.8rem, 5vw, 5rem);
+  line-height: 0.9;
+  letter-spacing: -0.06em;
+}
+
+.club-map-heading > p:last-child {
+  max-width: 440px;
+
+  align-self: end;
+
+  font-size: 0.95rem;
+  line-height: 1.45;
+}
+
+
+/* FLOORPLAN SHELL */
+
+.floorplan {
+  position: relative;
+
+  min-height: 720px;
+
+  overflow: hidden;
+
+  border: 2px solid #151515;
+  border-radius: 28px;
+
+  background:
+    linear-gradient(
+      rgba(255,255,255,0.35),
+      rgba(255,255,255,0.35)
+    ),
+    repeating-linear-gradient(
+      90deg,
+      #f7eee9 0,
+      #f7eee9 48px,
+      #f1e6e1 48px,
+      #f1e6e1 50px
+    );
+}
+
+
+/* DJ BOOTH */
+
+.floorplan-stage {
+  position: absolute;
+  top: 24px;
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  width: 210px;
+  min-height: 64px;
+
+  display: grid;
+  place-items: center;
+
+  border: 2px solid #151515;
+  border-radius: 18px;
+
+  background: #151515;
+  color: white;
+
+  font-size: 0.75rem;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+}
+
+
+/* ALL CLICKABLE ZONES */
+
+.floorplan-zone {
+  position: absolute;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  gap: 4px;
+
+  min-height: 74px;
+
+  padding: 12px 16px;
+
+  border: 2px solid #151515;
+  border-radius: 18px;
+
+  background: #fffaf7;
+  color: #151515;
+
+  font: inherit;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.18s ease,
+    background 0.18s ease;
+}
+
+.floorplan-zone span {
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.05em;
+}
+
+.floorplan-zone small {
+  font-size: 0.56rem;
+  font-weight: 800;
+  opacity: 0.7;
+}
+
+
+/* ZONE POSITIONS */
+
+.floorplan-dj {
+  top: 112px;
+  left: 50%;
+
+  width: 240px;
+
+  transform: translateX(-50%);
+
+  background: #e5d3ec;
+}
+
+.floorplan-vip-left {
+  top: 210px;
+  left: 38px;
+
+  width: 190px;
+
+  background: #f1d6e3;
+}
+
+.floorplan-vip-right {
+  top: 210px;
+  right: 38px;
+
+  width: 190px;
+
+  background: #f1d6e3;
+}
+
+.floorplan-center {
+  top: 390px;
+  left: 50%;
+
+  width: 260px;
+
+  transform: translateX(-50%);
+
+  background: #e8d8ef;
+}
+
+.floorplan-main {
+  bottom: 38px;
+  left: 50%;
+
+  width: min(560px, 78%);
+
+  transform: translateX(-50%);
+
+  background: #f4d7e5;
+}
+
+
+/* DANCE FLOOR */
+
+.dance-floor {
+  position: absolute;
+  top: 285px;
+  left: 50%;
+
+  width: min(500px, 62%);
+  height: 160px;
+
+  transform: translateX(-50%);
+
+  display: grid;
+  place-items: center;
+
+  border: 2px dashed rgba(21,21,21,0.5);
+  border-radius: 28px;
+
+  background:
+    radial-gradient(
+      circle at 30% 30%,
+      rgba(230, 197, 236, 0.7),
+      transparent 36%
+    ),
+    radial-gradient(
+      circle at 70% 70%,
+      rgba(244, 205, 223, 0.7),
+      transparent 38%
+    ),
+    #fff8f5;
+
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+}
+
+
+/* BAR */
+
+.main-bar {
+  position: absolute;
+  bottom: 145px;
+  left: 50%;
+
+  width: 300px;
+  min-height: 48px;
+
+  transform: translateX(-50%);
+
+  display: grid;
+  place-items: center;
+
+  border: 2px solid #151515;
+  border-radius: 16px;
+
+  background: #151515;
+  color: white;
+
+  font-size: 0.66rem;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+}
+
+
+/* SELECTED / HOVER STATE */
+
+.floorplan-zone:hover {
+  transform: scale(1.02);
+}
+
+.floorplan-dj:hover,
+.floorplan-center:hover,
+.floorplan-main:hover {
+  transform:
+    translateX(-50%)
+    scale(1.02);
+}
+
+.floorplan-zone.selected {
+  background: #151515;
+  color: white;
+}
+
+
+/* DETAILS BAR */
+
+.floorplan-details {
+  display: grid;
+  grid-template-columns: 1.1fr 1.7fr;
+  gap: 28px;
+
+  padding: 22px 24px;
+
+  border: 2px solid #151515;
+  border-top: 0;
+  border-radius: 0 0 24px 24px;
+
+  background: #fffaf7;
+}
+
+.floorplan-details h4 {
+  margin: 4px 0 0;
+
+  font-size: 1.8rem;
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+
+.floorplan-details small {
+  font-size: 0.56rem;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+}
+
+.floorplan-detail-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+
+.floorplan-detail-stats div {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.floorplan-detail-stats strong {
+  font-size: 0.9rem;
+}
+
+
+/* TABLET */
+
+@media (max-width: 850px) {
+
+  .club-map-heading {
+    grid-template-columns: 1fr;
+  }
+
+  .club-map-heading .section-kicker {
+    grid-column: auto;
+  }
+
+  .floorplan {
+    min-height: 680px;
+  }
+
+  .floorplan-vip-left {
+    left: 20px;
+    width: 160px;
+  }
+
+  .floorplan-vip-right {
+    right: 20px;
+    width: 160px;
+  }
+
+  .floorplan-details {
+    grid-template-columns: 1fr;
+  }
+
+  .floorplan-detail-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+
+/* MOBILE */
+
+@media (max-width: 650px) {
+
+  .club-map {
+    margin-bottom: 50px;
+  }
+
+  .floorplan {
+    min-height: 620px;
+  }
+
+  .floorplan-stage {
+    width: 170px;
+  }
+
+  .floorplan-dj {
+    width: 190px;
+  }
+
+  .floorplan-vip-left,
+  .floorplan-vip-right {
+    top: 210px;
+    width: 125px;
+    min-height: 70px;
+
+    padding: 10px 8px;
+  }
+
+  .floorplan-vip-left {
+    left: 12px;
+  }
+
+  .floorplan-vip-right {
+    right: 12px;
+  }
+
+  .dance-floor {
+    top: 300px;
+
+    width: 74%;
+    height: 135px;
+  }
+
+  .floorplan-center {
+    top: 455px;
+    width: 200px;
+  }
+
+  .main-bar {
+    bottom: 100px;
+    width: 210px;
+  }
+
+  .floorplan-main {
+    bottom: 18px;
+    width: 78%;
+  }
+
+  .floorplan-detail-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
