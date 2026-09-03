@@ -1535,3 +1535,93 @@ if (detailTicketButton) {
 renderCalendar();
 
 filterEvents();
+/* =========================================
+   TABLE SELECTION
+========================================= */
+
+const tableButtons =
+  document.querySelectorAll(
+    ".table-select-button"
+  );
+
+tableButtons.forEach((button) => {
+
+  button.addEventListener(
+    "click",
+    () => {
+
+      const tableName =
+        button.dataset.table;
+
+      const tableSection =
+        document.querySelector(
+          ".table-request-panel"
+        );
+
+      tableSection.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      });
+
+      button.textContent =
+        `${tableName} Selected ✓`;
+
+    }
+  );
+
+});
+
+
+/* =========================================
+   PROTOTYPE FORMS
+========================================= */
+
+function activatePrototypeForm(
+  formId,
+  messageId
+) {
+
+  const form =
+    document.getElementById(
+      formId
+    );
+
+  const message =
+    document.getElementById(
+      messageId
+    );
+
+  if (!form || !message) {
+    return;
+  }
+
+  form.addEventListener(
+    "submit",
+    (event) => {
+
+      event.preventDefault();
+
+      message.classList.remove(
+        "hidden"
+      );
+
+    }
+  );
+
+}
+
+
+activatePrototypeForm(
+  "table-request-form",
+  "table-form-message"
+);
+
+activatePrototypeForm(
+  "guest-list-form",
+  "guest-form-message"
+);
+
+activatePrototypeForm(
+  "insider-form",
+  "insider-message"
+);
