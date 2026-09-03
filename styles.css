@@ -2534,3 +2534,177 @@ footer {
     padding: 24px 20px;
   }
 }
+/* ========================================
+   SELECTED BOTTLE CART
+======================================== */
+
+.builder-cart {
+  min-width: 0;
+}
+
+.builder-cart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 18px;
+
+  margin-bottom: 12px;
+}
+
+.builder-cart-header span {
+  font-size: 0.58rem;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+}
+
+.builder-cart-header strong {
+  font-size: 1.65rem;
+}
+
+.selected-bottles {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.empty-cart-message {
+  opacity: 0.65;
+  font-size: 0.72rem !important;
+}
+
+.selected-bottle-row {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  align-items: center;
+  gap: 10px;
+
+  padding: 10px 12px;
+
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 12px;
+
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.selected-bottle-info {
+  min-width: 0;
+}
+
+.selected-bottle-info strong {
+  display: block;
+
+  font-size: 0.78rem;
+  line-height: 1.2;
+}
+
+.selected-bottle-info span {
+  display: block;
+
+  margin-top: 2px;
+
+  opacity: 0.7;
+
+  font-size: 0.64rem;
+}
+
+.bottle-quantity {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.bottle-quantity button {
+  width: 28px;
+  height: 28px;
+
+  display: grid;
+  place-items: center;
+
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 50%;
+
+  background: transparent;
+  color: white;
+
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: 900;
+
+  cursor: pointer;
+}
+
+.bottle-quantity span {
+  min-width: 18px;
+
+  text-align: center;
+
+  font-size: 0.72rem;
+  font-weight: 900;
+}
+
+.remove-bottle {
+  border: 0;
+
+  background: transparent;
+  color: white;
+
+  opacity: 0.65;
+
+  font-size: 0.7rem;
+  font-weight: 900;
+
+  cursor: pointer;
+}
+
+.remove-bottle:hover {
+  opacity: 1;
+}
+
+
+/* ========================================
+   RESERVATION BOTTLE LIST
+======================================== */
+
+.summary-bottle-block {
+  border-top: 1px solid #151515;
+}
+
+.summary-bottle-block .summary-row {
+  border-top: 0;
+}
+
+.summary-bottle-list {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+
+  padding-bottom: 16px;
+}
+
+.summary-bottle-item {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+
+  font-size: 0.72rem;
+}
+
+.summary-bottle-item span:last-child {
+  font-weight: 900;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 650px) {
+
+  .selected-bottle-row {
+    grid-template-columns: 1fr auto;
+  }
+
+  .remove-bottle {
+    grid-column: 1 / -1;
+
+    justify-self: start;
+  }
+}
