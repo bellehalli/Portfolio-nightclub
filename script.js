@@ -1820,49 +1820,307 @@ bottleTabs.forEach((tab) => {
 
 
 /* =====================================
+   BOTTLE CART
+===================================== */
+
+const selectedBottlesContainer =
+  document.getElementById(
+    "selected-bottles"
+  );
+
+const summaryBottleList =
+  document.getElementById(
+    "summary-bottle-list"
+  );
+
+
+const bottleCart = {};
+
+
+/* =====================================
    ADD BOTTLES / PACKAGES
 ===================================== */
 
 addBottleButtons.forEach((button) => {
 
-  let quantity = 0;
-
   button.addEventListener(
     "click",
     () => {
 
-      const price =
-        Number(button.dataset.price);
-
       const name =
         button.dataset.name;
 
-
-      quantity++;
-
-      bottleTotal += price;
+      const price =
+        Number(button.dataset.price);
 
 
-      button.textContent =
-        quantity === 1
-          ? "Added ✓"
-          : `Added ×${quantity}`;
+      if (!bottleCart[name]) {
+
+        bottleCart[name] = {
+          name: name,
+          price: price,
+          quantity: 1
+        };
+
+      } else {
+
+        bottleCart[name].quantity++;
+
+      }
 
 
-      button.classList.add("selected");
-
-
-      updateBookingBuilder();
-
-
-      console.log(
-        `${name} added. Quantity: ${quantity}`
-      );
+      updateBottleCart();
 
     }
   );
 
 });
+
+
+/* =====================================
+   CALCULATE TOTAL
+===================================== */
+
+function calculateBottleTotal() {
+
+  bottleTotal = 0;
+
+
+  Object.values(
+    bottleCart
+  ).forEach((item) => {
+
+    bottleTotal +=
+      item.price *
+      item.quantity;
+
+  });
+
+}
+
+
+/* =====================================
+   RENDER BOTTLE CART
+===================================== */
+
+function updateBottleCart() {
+
+  calculateBottleTotal();
+
+
+  selectedBottlesContainer.innerHTML =
+    "";
+
+  summaryBottleList.innerHTML =
+    "";
+
+
+  const cartItems =
+    Object.values(
+      bottleCart
+    );
+
+
+  if (cartItems.length === 0) {
+
+    selectedBottlesContainer.innerHTML = `
+      <p class="empty-cart-message">
+        No bottles selected yet.
+      </p>
+    `;
+
+  }
+
+
+  cartItems.forEach((item) => {
+
+    const subtotal =
+      item.price *
+      item.quantity;
+
+
+    const cartRow =
+      document.createElement(
+        "div"
+      );
+
+    cartRow.classList.add(
+      "selected-bottle-row"
+    );
+
+
+    cartRow.innerHTML = `
+      <div class="selected-bottle-info">
+
+        <strong>
+          ${item.name}
+        </strong>
+
+        <span>
+          $${item.price.toLocaleString()}
+          each
+        </span>
+
+      </div>
+
+
+      <div class="bottle-quantity">
+
+        <button
+          type="button"
+          class="decrease-bottle"
+          data-name="${item.name}"
+          aria-label="Remove one ${item.name}"
+        >
+          −
+        </button>
+
+        <span>
+          ${item.quantity}
+        </span>
+
+        <button
+          type="button"
+          class="increase-bottle"
+          data-name="${item.name}"
+          aria-label="Add one ${item.name}"
+        >
+          +
+        </button>
+
+      </div>
+
+
+      <button
+        type="button"
+        class="remove-bottle"
+        data-name="${item.name}"
+      >
+        Remove
+      </button>
+    `;
+
+
+    selectedBottlesContainer.appendChild(
+      cartRow
+    );
+
+
+    const summaryItem =
+      document.createElement(
+        "div"
+      );
+
+    summaryItem.classList.add(
+      "summary-bottle-item"
+    );
+
+
+    summaryItem.innerHTML = `
+      <span>
+        ${item.name}
+        ×${item.quantity}
+      </span>
+
+      <span>
+        $${subtotal.toLocaleString()}
+      </span>
+    `;
+
+
+    summaryBottleList.appendChild(
+      summaryItem
+    );
+
+  });
+
+
+  bottleTotalElement.textContent =
+    `$${bottleTotal.toLocaleString()}`;
+
+
+  summaryBottles.textContent =
+    `$${bottleTotal.toLocaleString()}`;
+
+
+  updateBookingBuilder();
+
+}
+
+
+/* =====================================
+   CART BUTTONS
+===================================== */
+
+selectedBottlesContainer.addEventListener(
+  "click",
+  (event) => {
+
+    const increaseButton =
+      event.target.closest(
+        ".increase-bottle"
+      );
+
+    const decreaseButton =
+      event.target.closest(
+        ".decrease-bottle"
+      );
+
+    const removeButton =
+      event.target.closest(
+        ".remove-bottle"
+      );
+
+
+    if (increaseButton) {
+
+      const name =
+        increaseButton.dataset.name;
+
+      bottleCart[name].quantity++;
+
+      updateBottleCart();
+
+      return;
+    }
+
+
+    if (decreaseButton) {
+
+      const name =
+        decreaseButton.dataset.name;
+
+      bottleCart[name].quantity--;
+
+
+      if (
+        bottleCart[name].quantity <= 0
+      ) {
+
+        delete bottleCart[name];
+
+      }
+
+
+      updateBottleCart();
+
+      return;
+    }
+
+
+    if (removeButton) {
+
+      const name =
+        removeButton.dataset.name;
+
+      delete bottleCart[name];
+
+      updateBottleCart();
+
+    }
+
+  }
+);
 
 
 /* =====================================
