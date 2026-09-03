@@ -1930,6 +1930,45 @@ function updateBookingBuilder() {
    CONTINUE RESERVATION
 ===================================== */
 
+/* =====================================
+   OPEN RESERVATION FLOW
+===================================== */
+
+const reservationFlow = document.getElementById(
+  "reservation-flow"
+);
+
+const closeReservation = document.getElementById(
+  "close-reservation"
+);
+
+const reservationForm = document.getElementById(
+  "reservation-form"
+);
+
+const summarySection = document.getElementById(
+  "summary-section"
+);
+
+const summaryMinimum = document.getElementById(
+  "summary-minimum"
+);
+
+const summaryBottles = document.getElementById(
+  "summary-bottles"
+);
+
+const summaryDeposit = document.getElementById(
+  "summary-deposit"
+);
+
+const summaryCredit = document.getElementById(
+  "summary-credit"
+);
+
+
+/* OPEN THE RESERVATION FORM */
+
 continueReservation.addEventListener(
   "click",
   () => {
@@ -1938,14 +1977,107 @@ continueReservation.addEventListener(
       return;
     }
 
-
     if (bottleTotal < selectedMinimum) {
+      return;
+    }
+
+    const section =
+      sectionData[selectedSection];
+
+
+    summarySection.textContent =
+      section.name;
+
+    summaryMinimum.textContent =
+      `$${selectedMinimum.toLocaleString()}`;
+
+    summaryBottles.textContent =
+      `$${bottleTotal.toLocaleString()}`;
+
+    summaryDeposit.textContent =
+      `$${selectedDeposit.toLocaleString()}`;
+
+    summaryCredit.textContent =
+      `$${selectedCredit.toLocaleString()}`;
+
+
+    reservationFlow.classList.remove(
+      "hidden"
+    );
+
+
+    reservationFlow.scrollIntoView({
+      behavior: "smooth",
+      block: "start"
+    });
+
+  }
+);
+
+
+/* CLOSE THE RESERVATION FORM */
+
+closeReservation.addEventListener(
+  "click",
+  () => {
+
+    reservationFlow.classList.add(
+      "hidden"
+    );
+
+  }
+);
+
+
+/* =====================================
+   PROTOTYPE FORM SUBMISSION
+===================================== */
+
+reservationForm.addEventListener(
+  "submit",
+  (event) => {
+
+    event.preventDefault();
+
+
+    const guestName =
+      document.getElementById(
+        "reservation-name"
+      ).value.trim();
+
+    const selectedEvent =
+      document.getElementById(
+        "reservation-event"
+      ).value;
+
+    const guestCount =
+      document.getElementById(
+        "reservation-guests"
+      ).value;
+
+    const celebration =
+      document.getElementById(
+        "reservation-celebration"
+      ).value;
+
+
+    if (
+      !guestName ||
+      !selectedEvent ||
+      !guestCount
+    ) {
       return;
     }
 
 
     alert(
-      "Reservation builder is ready. Next we’ll connect this button to the guest info + checkout flow."
+      `Reservation request received for ${guestName}.\n\n` +
+      `${selectedEvent}\n` +
+      `${sectionData[selectedSection].name}\n` +
+      `${guestCount} guests\n` +
+      `Bottle selections: $${bottleTotal.toLocaleString()}\n` +
+      `Deposit: $${selectedDeposit.toLocaleString()}\n` +
+      `Celebration: ${celebration}`
     );
 
   }
