@@ -1791,79 +1791,563 @@
   </div>
 
 
-  <div class="floorplan">
+  <div class="floorplan floorplan-svg">
 
-    <div class="floorplan-stage">
-      DJ BOOTH
-    </div>
-
-
-    <button
-      type="button"
-      class="floorplan-zone floorplan-dj"
-      data-section-map="dj-section"
-    >
-      <span>DJ SECTION</span>
-      <small>$1,200 MIN</small>
-    </button>
-
-
-    <button
-      type="button"
-      class="floorplan-zone floorplan-vip-left"
-      data-section-map="vip-wall"
-    >
-      <span>VIP WALL</span>
-      <small>6–8 GUESTS</small>
-    </button>
-
-
-    <button
-      type="button"
-      class="floorplan-zone floorplan-vip-right"
-      data-section-map="vip-wall"
-    >
-      <span>VIP WALL</span>
-      <small>3 LEFT</small>
-    </button>
-
-
-    <div class="dance-floor">
-      <span>DANCE FLOOR</span>
-    </div>
-
-
-    <button
-      type="button"
-      class="floorplan-zone floorplan-center"
-      data-section-map="center-booth"
-    >
-      <span>PREMIUM CENTER</span>
-      <small>$1,500 MIN</small>
-    </button>
-
-
-    <div class="main-bar">
-      MAIN BAR
-    </div>
-
-
-    <button
-      type="button"
-      class="floorplan-zone floorplan-main"
-      data-section-map="main-floor"
-    >
-      <span>MAIN FLOOR BOOTHS</span>
-      <small>FROM $500</small>
-    </button>
-
-  </div>
-
-
-  <div
-    id="floorplan-details"
-    class="floorplan-details"
+  <svg
+    viewBox="0 0 1000 760"
+    role="img"
+    aria-labelledby="floorplan-title floorplan-desc"
   >
+
+    <title id="floorplan-title">
+      Vanta Social club floorplan
+    </title>
+
+    <desc id="floorplan-desc">
+      Interactive top-down floorplan showing DJ booths,
+      VIP booths, center booths, dance floor, bar and
+      main floor booths.
+    </desc>
+
+
+    <!-- ROOM OUTLINE -->
+
+    <rect
+      x="25"
+      y="25"
+      width="950"
+      height="710"
+      rx="44"
+      class="map-room-outline"
+    />
+
+
+    <!-- DJ BOOTH -->
+
+    <g class="map-fixture">
+
+      <rect
+        x="380"
+        y="55"
+        width="240"
+        height="70"
+        rx="20"
+        class="map-dj-booth"
+      />
+
+      <circle
+        cx="430"
+        cy="90"
+        r="10"
+        class="map-equipment"
+      />
+
+      <circle
+        cx="500"
+        cy="90"
+        r="10"
+        class="map-equipment"
+      />
+
+      <circle
+        cx="570"
+        cy="90"
+        r="10"
+        class="map-equipment"
+      />
+
+      <text
+        x="500"
+        y="116"
+        text-anchor="middle"
+        class="map-label-small"
+      >
+        DJ BOOTH
+      </text>
+
+    </g>
+
+
+    <!-- DJ SECTION BOOTHS -->
+
+    <g
+      class="map-zone"
+      data-section-map="dj-section"
+      tabindex="0"
+      role="button"
+      aria-label="DJ Section"
+    >
+
+      <rect
+        x="340"
+        y="150"
+        width="95"
+        height="72"
+        rx="24"
+        class="map-booth map-booth-dj"
+      />
+
+      <circle
+        cx="388"
+        cy="185"
+        r="15"
+        class="map-table"
+      />
+
+      <text
+        x="388"
+        y="210"
+        text-anchor="middle"
+        class="map-booth-number"
+      >
+        DJ1
+      </text>
+
+
+      <rect
+        x="452"
+        y="140"
+        width="95"
+        height="82"
+        rx="24"
+        class="map-booth map-booth-dj"
+      />
+
+      <circle
+        cx="500"
+        cy="180"
+        r="15"
+        class="map-table"
+      />
+
+      <text
+        x="500"
+        y="208"
+        text-anchor="middle"
+        class="map-booth-number"
+      >
+        DJ2
+      </text>
+
+
+      <rect
+        x="565"
+        y="150"
+        width="95"
+        height="72"
+        rx="24"
+        class="map-booth map-booth-dj"
+      />
+
+      <circle
+        cx="612"
+        cy="185"
+        r="15"
+        class="map-table"
+      />
+
+      <text
+        x="612"
+        y="210"
+        text-anchor="middle"
+        class="map-booth-number"
+      >
+        DJ3
+      </text>
+
+      <text
+        x="500"
+        y="245"
+        text-anchor="middle"
+        class="map-zone-title"
+      >
+        DJ SECTION
+      </text>
+
+    </g>
+
+
+    <!-- LEFT VIP WALL -->
+
+    <g
+      class="map-zone"
+      data-section-map="vip-wall"
+      tabindex="0"
+      role="button"
+      aria-label="VIP Wall Booths"
+    >
+
+      <rect
+        x="70"
+        y="245"
+        width="145"
+        height="80"
+        rx="28"
+        class="map-booth map-booth-vip"
+      />
+
+      <circle
+        cx="145"
+        cy="285"
+        r="16"
+        class="map-table"
+      />
+
+      <text
+        x="145"
+        y="315"
+        text-anchor="middle"
+        class="map-booth-number"
+      >
+        V1
+      </text>
+
+
+      <rect
+        x="70"
+        y="350"
+        width="145"
+        height="80"
+        rx="28"
+        class="map-booth map-booth-vip"
+      />
+
+      <circle
+        cx="145"
+        cy="390"
+        r="16"
+        class="map-table"
+      />
+
+      <text
+        x="145"
+        y="420"
+        text-anchor="middle"
+        class="map-booth-number"
+      >
+        V2
+      </text>
+
+
+      <rect
+        x="70"
+        y="455"
+        width="145"
+        height="80"
+        rx="28"
+        class="map-booth map-booth-vip"
+      />
+
+      <circle
+        cx="145"
+        cy="495"
+        r="16"
+        class="map-table"
+      />
+
+      <text
+        x="145"
+        y="525"
+        text-anchor="middle"
+        class="map-booth-number"
+      >
+        V3
+      </text>
+
+    </g>
+
+
+    <!-- RIGHT VIP WALL -->
+
+    <g
+      class="map-zone"
+      data-section-map="vip-wall"
+      tabindex="0"
+      role="button"
+      aria-label="VIP Wall Booths"
+    >
+
+      <rect
+        x="785"
+        y="245"
+        width="145"
+        height="80"
+        rx="28"
+        class="map-booth map-booth-vip"
+      />
+
+      <circle
+        cx="855"
+        cy="285"
+        r="16"
+        class="map-table"
+      />
+
+      <text
+        x="855"
+        y="315"
+        text-anchor="middle"
+        class="map-booth-number"
+      >
+        V4
+      </text>
+
+
+      <rect
+        x="785"
+        y="350"
+        width="145"
+        height="80"
+        rx="28"
+        class="map-booth map-booth-vip"
+      />
+
+      <circle
+        cx="855"
+        cy="390"
+        r="16"
+        class="map-table"
+      />
+
+      <text
+        x="855"
+        y="420"
+        text-anchor="middle"
+        class="map-booth-number"
+      >
+        V5
+      </text>
+
+
+      <rect
+        x="785"
+        y="455"
+        width="145"
+        height="80"
+        rx="28"
+        class="map-booth map-booth-vip reserved"
+      />
+
+      <circle
+        cx="855"
+        cy="495"
+        r="16"
+        class="map-table"
+      />
+
+      <text
+        x="855"
+        y="515"
+        text-anchor="middle"
+        class="map-booth-number"
+      >
+        V6
+      </text>
+
+      <text
+        x="855"
+        y="535"
+        text-anchor="middle"
+        class="map-reserved-label"
+      >
+        RESERVED
+      </text>
+
+    </g>
+
+
+    <!-- DANCE FLOOR -->
+
+    <g class="map-fixture">
+
+      <rect
+        x="270"
+        y="275"
+        width="460"
+        height="245"
+        rx="90"
+        class="map-dance-floor"
+      />
+
+      <path
+        d="
+          M310 335
+          H690
+          M310 395
+          H690
+          M310 455
+          H690
+
+          M385 305
+          V490
+          M500 305
+          V490
+          M615 305
+          V490
+        "
+        class="map-floor-grid"
+      />
+
+      <text
+        x="500"
+        y="410"
+        text-anchor="middle"
+        class="map-dance-label"
+      >
+        DANCE FLOOR
+      </text>
+
+    </g>
+
+
+    <!-- CENTER BOOTHS -->
+
+    <g
+      class="map-zone"
+      data-section-map="center-booth"
+      tabindex="0"
+      role="button"
+      aria-label="Premium Center Booths"
+    >
+
+      <rect
+        x="350"
+        y="545"
+        width="135"
+        height="75"
+        rx="36"
+        class="map-booth map-booth-center"
+      />
+
+      <circle
+        cx="418"
+        cy="582"
+        r="16"
+        class="map-table"
+      />
+
+      <text
+        x="418"
+        y="610"
+        text-anchor="middle"
+        class="map-booth-number"
+      >
+        C1
+      </text>
+
+
+      <rect
+        x="515"
+        y="545"
+        width="135"
+        height="75"
+        rx="36"
+        class="map-booth map-booth-center"
+      />
+
+      <circle
+        cx="583"
+        cy="582"
+        r="16"
+        class="map-table"
+      />
+
+      <text
+        x="583"
+        y="610"
+        text-anchor="middle"
+        class="map-booth-number"
+      >
+        C2
+      </text>
+
+    </g>
+
+
+    <!-- MAIN BAR -->
+
+    <g class="map-fixture">
+
+      <rect
+        x="335"
+        y="640"
+        width="330"
+        height="52"
+        rx="24"
+        class="map-bar"
+      />
+
+      <text
+        x="500"
+        y="673"
+        text-anchor="middle"
+        class="map-label-small"
+      >
+        MAIN BAR
+      </text>
+
+
+      <circle cx="365" cy="715" r="9" class="map-stool" />
+      <circle cx="420" cy="715" r="9" class="map-stool" />
+      <circle cx="475" cy="715" r="9" class="map-stool" />
+      <circle cx="530" cy="715" r="9" class="map-stool" />
+      <circle cx="585" cy="715" r="9" class="map-stool" />
+      <circle cx="640" cy="715" r="9" class="map-stool" />
+
+    </g>
+
+
+    <!-- MAIN FLOOR BOOTHS -->
+
+    <g
+      class="map-zone"
+      data-section-map="main-floor"
+      tabindex="0"
+      role="button"
+      aria-label="Main Floor Booths"
+    >
+
+      <rect
+        x="245"
+        y="655"
+        width="70"
+        height="58"
+        rx="24"
+        class="map-booth map-booth-main"
+      />
+
+      <rect
+        x="685"
+        y="655"
+        width="70"
+        height="58"
+        rx="24"
+        class="map-booth map-booth-main"
+      />
+
+      <text
+        x="280"
+        y="690"
+        text-anchor="middle"
+        class="map-booth-number"
+      >
+        M1
+      </text>
+
+      <text
+        x="720"
+        y="690"
+        text-anchor="middle"
+        class="map-booth-number"
+      >
+        M2
+      </text>
+
+    </g>
+
+  </svg>
+
+</div>
 
     <div>
       <small>SELECT A SECTION</small>
