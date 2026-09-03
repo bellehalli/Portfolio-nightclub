@@ -2494,6 +2494,269 @@
   </div>
 
 </section>
+  <section id="reservation-flow" class="reservation-flow hidden">
+
+  <div class="reservation-header">
+
+    <div>
+      <p class="section-kicker">
+        COMPLETE YOUR NIGHT
+      </p>
+
+      <h2>
+        Table Reservation
+      </h2>
+    </div>
+
+    <button
+      type="button"
+      id="close-reservation"
+      class="detail-close"
+      aria-label="Close reservation"
+    >
+      ×
+    </button>
+
+  </div>
+
+
+  <div class="reservation-layout">
+
+    <form
+      id="reservation-form"
+      class="reservation-form"
+    >
+
+      <div class="form-grid">
+
+        <label>
+          Full Name
+
+          <input
+            type="text"
+            id="reservation-name"
+            required
+          >
+        </label>
+
+
+        <label>
+          Phone
+
+          <input
+            type="tel"
+            id="reservation-phone"
+            required
+          >
+        </label>
+
+
+        <label>
+          Email
+
+          <input
+            type="email"
+            id="reservation-email"
+            required
+          >
+        </label>
+
+
+        <label>
+          Guest Count
+
+          <select
+            id="reservation-guests"
+            required
+          >
+            <option value="">
+              Select
+            </option>
+
+            <option>2</option>
+            <option>4</option>
+            <option>6</option>
+            <option>8</option>
+            <option>10</option>
+            <option>12</option>
+          </select>
+        </label>
+
+
+        <label>
+          Event
+
+          <select
+            id="reservation-event"
+            required
+          >
+            <option value="">
+              Select Event
+            </option>
+
+            <option>
+              Velvet Fridays
+            </option>
+
+            <option>
+              After Hours
+            </option>
+
+            <option>
+              Sunday Service
+            </option>
+
+            <option>
+              Midnight Social
+            </option>
+
+            <option>
+              Global Frequency
+            </option>
+          </select>
+        </label>
+
+
+        <label>
+          Celebration
+
+          <select id="reservation-celebration">
+
+            <option>
+              None
+            </option>
+
+            <option>
+              Birthday
+            </option>
+
+            <option>
+              Bachelorette
+            </option>
+
+            <option>
+              Graduation
+            </option>
+
+            <option>
+              Anniversary
+            </option>
+
+            <option>
+              Other
+            </option>
+
+          </select>
+        </label>
+
+      </div>
+
+
+      <label class="full-field">
+
+        Special Requests
+
+        <textarea
+          id="reservation-notes"
+          rows="4"
+          placeholder="Birthday signage, preferred arrival time, accessibility needs, etc."
+        ></textarea>
+
+      </label>
+
+
+      <label class="reservation-check">
+
+        <input
+          type="checkbox"
+          id="reservation-agreement"
+          required
+        >
+
+        <span>
+          I understand that table minimums,
+          taxes, gratuity and venue policies
+          may apply.
+        </span>
+
+      </label>
+
+
+      <button
+        type="submit"
+        class="reservation-submit"
+      >
+        Reserve Table →
+      </button>
+
+    </form>
+
+
+    <aside class="reservation-summary">
+
+      <p class="section-kicker">
+        YOUR RESERVATION
+      </p>
+
+      <h3 id="summary-section">
+        Selected Booth
+      </h3>
+
+
+      <div class="summary-row">
+        <span>
+          Table minimum
+        </span>
+
+        <strong id="summary-minimum">
+          $0
+        </strong>
+      </div>
+
+
+      <div class="summary-row">
+        <span>
+          Bottle selections
+        </span>
+
+        <strong id="summary-bottles">
+          $0
+        </strong>
+      </div>
+
+
+      <div class="summary-row">
+        <span>
+          Deposit due today
+        </span>
+
+        <strong id="summary-deposit">
+          $0
+        </strong>
+      </div>
+
+
+      <div class="summary-row highlight">
+        <span>
+          Table credit
+        </span>
+
+        <strong id="summary-credit">
+          $0
+        </strong>
+      </div>
+
+
+      <p class="summary-note">
+        Prototype checkout only.
+        No payment will be processed.
+      </p>
+
+    </aside>
+
+  </div>
+
+</section>
   <footer>
     <p>
       Vanta Social — Detroit, Michigan
