@@ -1129,3 +1129,554 @@ footer {
     min-height: 44px;
   }
 }
+/* ========================================
+   TABLES
+======================================== */
+
+.tables-section {
+  padding-top: 110px;
+  padding-bottom: 110px;
+}
+
+.table-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.table-card {
+  min-height: 520px;
+  padding: 26px;
+
+  display: flex;
+  flex-direction: column;
+
+  border: 2px solid #151515;
+  border-radius: 24px;
+
+  background: #fffaf7;
+}
+
+.table-card-featured {
+  background: #d9b7e6;
+}
+
+.table-card-top {
+  display: flex;
+  justify-content: space-between;
+
+  margin-bottom: 50px;
+
+  font-size: 0.62rem;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+}
+
+.table-card h3 {
+  font-size: clamp(2.3rem, 4vw, 4rem);
+  line-height: 0.9;
+  letter-spacing: -0.06em;
+
+  margin-bottom: 18px;
+}
+
+.table-card > p {
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.table-price {
+  display: flex;
+  flex-direction: column;
+
+  margin-top: auto;
+  padding-top: 30px;
+}
+
+.table-price small {
+  font-size: 0.6rem;
+  font-weight: 900;
+}
+
+.table-price strong {
+  font-size: 3rem;
+  line-height: 1;
+}
+
+.table-credit {
+  margin: 18px 0;
+  padding: 14px;
+
+  border: 1px solid #151515;
+  border-radius: 13px;
+
+  background: #f3d8e5;
+
+  font-size: 0.73rem;
+}
+
+.table-credit strong {
+  display: block;
+  margin-top: 3px;
+}
+
+.table-select-button {
+  min-height: 48px;
+
+  border: 0;
+  border-radius: 100px;
+
+  background: #151515;
+  color: white;
+
+  font: inherit;
+  font-size: 0.7rem;
+  font-weight: 900;
+  text-transform: uppercase;
+
+  cursor: pointer;
+}
+
+.birthday-includes {
+  display: grid;
+  gap: 10px;
+
+  margin: auto 0 22px;
+
+  font-size: 0.78rem;
+  font-weight: 800;
+}
+
+
+/* TABLE REQUEST */
+
+.table-request-panel {
+  margin-top: 45px;
+  padding: 35px;
+
+  display: grid;
+  grid-template-columns: 0.8fr 1.4fr;
+  gap: 60px;
+
+  border: 2px solid #151515;
+  border-radius: 26px;
+
+  background: #f2d7e3;
+}
+
+.table-request-copy h3 {
+  font-size: clamp(2.6rem, 5vw, 5rem);
+  line-height: 0.9;
+  letter-spacing: -0.06em;
+
+  margin-bottom: 20px;
+}
+
+.table-request-copy > p:last-child {
+  max-width: 380px;
+}
+
+
+/* ========================================
+   FORMS
+======================================== */
+
+.nightlife-form {
+  width: 100%;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+}
+
+.nightlife-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+
+  font-size: 0.62rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.nightlife-form input,
+.nightlife-form select {
+  width: 100%;
+  min-height: 48px;
+
+  padding: 0 13px;
+
+  border: 1px solid #151515;
+  border-radius: 10px;
+
+  background: #fffaf7;
+  color: #151515;
+
+  font: inherit;
+  font-size: 0.9rem;
+}
+
+.form-submit-button {
+  width: 100%;
+  min-height: 50px;
+
+  margin-top: 16px;
+
+  border: 0;
+  border-radius: 100px;
+
+  background: #151515;
+  color: white;
+
+  font: inherit;
+  font-size: 0.72rem;
+  font-weight: 900;
+  text-transform: uppercase;
+
+  cursor: pointer;
+}
+
+.form-message {
+  margin-top: 15px;
+
+  padding: 12px;
+
+  border: 1px solid #151515;
+  border-radius: 10px;
+
+  font-size: 0.75rem;
+  font-weight: 900;
+}
+
+
+/* ========================================
+   GUEST LIST
+======================================== */
+
+.guest-section {
+  padding: 110px 0;
+}
+
+.guest-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 70px;
+}
+
+.guest-copy h2 {
+  max-width: 600px;
+
+  font-size: clamp(3.5rem, 7vw, 6.5rem);
+  line-height: 0.86;
+  letter-spacing: -0.07em;
+
+  margin-bottom: 30px;
+}
+
+.guest-copy > p {
+  max-width: 490px;
+}
+
+.guest-benefits {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+
+  margin-top: 40px;
+
+  border-top: 1px solid #151515;
+  border-bottom: 1px solid #151515;
+}
+
+.guest-benefits div {
+  padding: 22px 12px;
+}
+
+.guest-benefits strong,
+.guest-benefits span {
+  display: block;
+}
+
+.guest-benefits strong {
+  font-size: 1.6rem;
+}
+
+.guest-benefits span {
+  margin-top: 4px;
+  font-size: 0.68rem;
+}
+
+.guest-form {
+  padding: 28px;
+
+  border: 2px solid #151515;
+  border-radius: 24px;
+
+  background: #fffaf7;
+}
+
+.consent-copy {
+  margin-top: 13px;
+
+  font-size: 0.6rem;
+  line-height: 1.4;
+}
+
+
+/* ========================================
+   INSIDERS
+======================================== */
+
+.insider-section {
+  padding: 90px 0;
+}
+
+.insider-box {
+  padding: 50px;
+
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 70px;
+  align-items: center;
+
+  border: 2px solid #151515;
+  border-radius: 30px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #ff8179,
+      #dda1c7,
+      #caa1df
+    );
+}
+
+.insider-box h2 {
+  max-width: 700px;
+
+  margin-bottom: 22px;
+
+  font-size: clamp(3rem, 6vw, 6rem);
+  line-height: 0.86;
+  letter-spacing: -0.065em;
+}
+
+.insider-box > div > p:last-child {
+  max-width: 560px;
+}
+
+.insider-form {
+  display: grid;
+  gap: 10px;
+}
+
+.insider-form input,
+.insider-form button {
+  min-height: 52px;
+
+  padding: 0 15px;
+
+  border: 1px solid #151515;
+  border-radius: 100px;
+
+  font: inherit;
+}
+
+.insider-form input {
+  background: #fffaf7;
+}
+
+.insider-form button {
+  background: #151515;
+  color: white;
+
+  font-size: 0.72rem;
+  font-weight: 900;
+  text-transform: uppercase;
+
+  cursor: pointer;
+}
+
+
+/* ========================================
+   VISIT TONIGHT
+======================================== */
+
+.visit-section {
+  padding: 110px 0;
+}
+
+.visit-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+
+  border-top: 2px solid #151515;
+  border-left: 2px solid #151515;
+}
+
+.visit-card {
+  min-height: 300px;
+  padding: 24px;
+
+  display: flex;
+  flex-direction: column;
+
+  border-right: 2px solid #151515;
+  border-bottom: 2px solid #151515;
+
+  background: #fffaf7;
+}
+
+.visit-card:nth-child(2) {
+  background: #efd3e1;
+}
+
+.visit-card:nth-child(3) {
+  background: #d8bee7;
+}
+
+.visit-number {
+  margin-bottom: auto;
+
+  font-size: 0.65rem;
+  font-weight: 900;
+}
+
+.visit-card small {
+  margin-bottom: 7px;
+
+  font-size: 0.6rem;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+}
+
+.visit-card h3 {
+  font-size: clamp(2rem, 3.2vw, 3.6rem);
+  line-height: 0.9;
+  letter-spacing: -0.055em;
+
+  margin-bottom: 14px;
+}
+
+.visit-card p {
+  font-size: 0.8rem;
+  line-height: 1.45;
+}
+
+.visit-card-wide {
+  grid-column: span 2;
+
+  min-height: 250px;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+}
+
+.location-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+}
+
+.directions-button {
+  margin-top: 20px;
+
+  min-height: 44px;
+  padding: 0 15px;
+
+  border: 0;
+  border-radius: 100px;
+
+  background: #151515;
+  color: white;
+
+  font: inherit;
+  font-size: 0.7rem;
+  font-weight: 900;
+
+  cursor: pointer;
+}
+
+.contact-card {
+  background: #151515;
+  color: white;
+}
+
+.contact-actions {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 9px;
+}
+
+.contact-actions a {
+  padding-bottom: 7px;
+
+  border-bottom: 1px solid white;
+
+  font-size: 0.9rem;
+  font-weight: 800;
+}
+
+
+/* ========================================
+   RESPONSIVE
+======================================== */
+
+@media (max-width: 900px) {
+
+  .table-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .table-request-panel,
+  .guest-layout,
+  .insider-box {
+    grid-template-columns: 1fr;
+  }
+
+  .visit-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+}
+
+
+@media (max-width: 650px) {
+
+  .tables-section,
+  .guest-section,
+  .visit-section {
+    padding: 75px 0;
+  }
+
+  .table-request-panel {
+    padding: 22px;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .guest-benefits {
+    grid-template-columns: 1fr;
+  }
+
+  .insider-box {
+    padding: 28px;
+  }
+
+  .visit-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .visit-card-wide {
+    grid-column: span 1;
+    grid-template-columns: 1fr;
+  }
+
+}
