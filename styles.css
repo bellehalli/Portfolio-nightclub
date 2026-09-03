@@ -3825,9 +3825,12 @@ footer {
 
 .event-page-grid {
   display: grid;
-  grid-template-columns: 1.35fr 0.65fr;
-  gap: 50px;
-  align-items: end;
+  grid-template-columns: 0.9fr 1.15fr 0.75fr;
+  gap: 48px;
+  align-items: center;
+  max-width: 1180px;
+  margin: 60px auto 0;
+}
 
  max-width: 1180px;
 margin: 0 auto;
