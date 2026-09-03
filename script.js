@@ -1625,3 +1625,328 @@ activatePrototypeForm(
   "insider-form",
   "insider-message"
 );
+/* =====================================
+   TABLE + BOTTLE SERVICE BUILDER
+===================================== */
+
+const sectionButtons = document.querySelectorAll(
+  ".section-select-button"
+);
+
+const bottleTabs = document.querySelectorAll(
+  ".bottle-tab"
+);
+
+const bottleItems = document.querySelectorAll(
+  ".bottle-item"
+);
+
+const addBottleButtons = document.querySelectorAll(
+  ".add-bottle"
+);
+
+const selectedSectionText = document.getElementById(
+  "selected-section-text"
+);
+
+const bottleTotalElement = document.getElementById(
+  "bottle-total"
+);
+
+const minimumProgress = document.getElementById(
+  "minimum-progress"
+);
+
+const minimumMessage = document.getElementById(
+  "minimum-message"
+);
+
+const continueReservation = document.getElementById(
+  "continue-reservation"
+);
+
+
+let selectedSection = null;
+
+let selectedMinimum = 0;
+
+let selectedDeposit = 0;
+
+let selectedCredit = 0;
+
+let bottleTotal = 0;
+
+
+/* =====================================
+   SECTION DATA
+===================================== */
+
+const sectionData = {
+  "main-floor": {
+    name: "Main Floor Booth",
+    minimum: 500,
+    deposit: 100,
+    credit: 125
+  },
+
+  "vip-wall": {
+    name: "VIP Wall Booth",
+    minimum: 750,
+    deposit: 150,
+    credit: 200
+  },
+
+  "dj-section": {
+    name: "DJ Section",
+    minimum: 1200,
+    deposit: 250,
+    credit: 325
+  },
+
+  "center-booth": {
+    name: "Premium Center Booth",
+    minimum: 1500,
+    deposit: 300,
+    credit: 400
+  }
+};
+
+
+/* =====================================
+   SELECT A SECTION
+===================================== */
+
+sectionButtons.forEach((button) => {
+
+  button.addEventListener(
+    "click",
+    () => {
+
+      const sectionKey =
+        button.dataset.section;
+
+      const section =
+        sectionData[sectionKey];
+
+      selectedSection =
+        sectionKey;
+
+      selectedMinimum =
+        section.minimum;
+
+      selectedDeposit =
+        section.deposit;
+
+      selectedCredit =
+        section.credit;
+
+
+      sectionButtons.forEach((btn) => {
+        btn.classList.remove("selected");
+        btn.textContent = "Select Booth →";
+      });
+
+
+      button.classList.add("selected");
+
+      button.textContent =
+        "Selected ✓";
+
+
+      selectedSectionText.textContent =
+        `${section.name} · $${section.minimum} minimum · $${section.deposit} deposit`;
+
+
+      updateBookingBuilder();
+
+
+      document
+        .getElementById("bottle-service")
+        .scrollIntoView({
+          behavior: "smooth",
+          block: "start"
+        });
+
+    }
+  );
+
+});
+
+
+/* =====================================
+   BOTTLE CATEGORY FILTERS
+===================================== */
+
+bottleTabs.forEach((tab) => {
+
+  tab.addEventListener(
+    "click",
+    () => {
+
+      bottleTabs.forEach((btn) => {
+        btn.classList.remove("active");
+      });
+
+      tab.classList.add("active");
+
+      const selectedCategory =
+        tab.dataset.bottleFilter;
+
+
+      bottleItems.forEach((item) => {
+
+        const itemCategory =
+          item.dataset.category;
+
+        if (
+          selectedCategory === "all" ||
+          itemCategory === selectedCategory
+        ) {
+
+          item.style.display = "flex";
+
+        } else {
+
+          item.style.display = "none";
+
+        }
+
+      });
+
+    }
+  );
+
+});
+
+
+/* =====================================
+   ADD BOTTLES / PACKAGES
+===================================== */
+
+addBottleButtons.forEach((button) => {
+
+  let quantity = 0;
+
+  button.addEventListener(
+    "click",
+    () => {
+
+      const price =
+        Number(button.dataset.price);
+
+      const name =
+        button.dataset.name;
+
+
+      quantity++;
+
+      bottleTotal += price;
+
+
+      button.textContent =
+        quantity === 1
+          ? "Added ✓"
+          : `Added ×${quantity}`;
+
+
+      button.classList.add("selected");
+
+
+      updateBookingBuilder();
+
+
+      console.log(
+        `${name} added. Quantity: ${quantity}`
+      );
+
+    }
+  );
+
+});
+
+
+/* =====================================
+   UPDATE TABLE BUILDER
+===================================== */
+
+function updateBookingBuilder() {
+
+  bottleTotalElement.textContent =
+    `$${bottleTotal.toLocaleString()}`;
+
+
+  if (!selectedSection) {
+
+    minimumProgress.style.width =
+      "0%";
+
+    minimumMessage.textContent =
+      "Choose a booth to see your minimum.";
+
+    continueReservation.disabled =
+      true;
+
+    return;
+  }
+
+
+  const percentage =
+    Math.min(
+      (bottleTotal / selectedMinimum) * 100,
+      100
+    );
+
+
+  minimumProgress.style.width =
+    `${percentage}%`;
+
+
+  const remaining =
+    selectedMinimum - bottleTotal;
+
+
+  if (remaining > 0) {
+
+    minimumMessage.textContent =
+      `$${remaining.toLocaleString()} more to reach your $${selectedMinimum.toLocaleString()} minimum.`;
+
+    continueReservation.disabled =
+      true;
+
+  } else {
+
+    minimumMessage.textContent =
+      `Minimum reached ✓ Your $${selectedDeposit} deposit receives $${selectedCredit} in table credit.`;
+
+    continueReservation.disabled =
+      false;
+
+  }
+
+}
+
+
+/* =====================================
+   CONTINUE RESERVATION
+===================================== */
+
+continueReservation.addEventListener(
+  "click",
+  () => {
+
+    if (!selectedSection) {
+      return;
+    }
+
+
+    if (bottleTotal < selectedMinimum) {
+      return;
+    }
+
+
+    alert(
+      "Reservation builder is ready. Next we’ll connect this button to the guest info + checkout flow."
+    );
+
+  }
+);
