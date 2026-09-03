@@ -2341,3 +2341,203 @@ reservationForm.addEventListener(
   }
 );
 updateBottleCart();
+/* =====================================
+   INTERACTIVE FLOORPLAN
+===================================== */
+
+const mapZones = document.querySelectorAll(
+  ".map-zone"
+);
+
+const floorplan = document.querySelector(
+  ".floorplan-svg"
+);
+
+const floorplanSectionName =
+  document.getElementById(
+    "floorplan-section-name"
+  );
+
+const floorplanCapacity =
+  document.getElementById(
+    "floorplan-capacity"
+  );
+
+const floorplanMinimum =
+  document.getElementById(
+    "floorplan-minimum"
+  );
+
+const floorplanDeposit =
+  document.getElementById(
+    "floorplan-deposit"
+  );
+
+const floorplanStatus =
+  document.getElementById(
+    "floorplan-status"
+  );
+
+
+/* =====================================
+   MAP DISPLAY DATA
+===================================== */
+
+const floorplanData = {
+
+  "main-floor": {
+    name: "Main Floor Booths",
+    capacity: "4–6 guests",
+    minimum: "$500",
+    deposit: "$100",
+    status: "Available"
+  },
+
+  "vip-wall": {
+    name: "VIP Wall Booths",
+    capacity: "6–8 guests",
+    minimum: "$750",
+    deposit: "$150",
+    status: "3 booths left"
+  },
+
+  "dj-section": {
+    name: "DJ Section",
+    capacity: "6–10 guests",
+    minimum: "$1,200",
+    deposit: "$250",
+    status: "Limited availability"
+  },
+
+  "center-booth": {
+    name: "Premium Center Booths",
+    capacity: "8–12 guests",
+    minimum: "$1,500",
+    deposit: "$300",
+    status: "Prime location"
+  }
+
+};
+
+
+/* =====================================
+   SELECT FROM FLOORPLAN
+===================================== */
+
+function selectFloorplanSection(
+  sectionKey
+) {
+
+  const mapData =
+    floorplanData[sectionKey];
+
+  if (!mapData) {
+    return;
+  }
+
+
+  /* highlight selected map area */
+
+  mapZones.forEach((zone) => {
+
+    if (
+      zone.dataset.sectionMap ===
+      sectionKey
+    ) {
+
+      zone.classList.add(
+        "selected"
+      );
+
+    } else {
+
+      zone.classList.remove(
+        "selected"
+      );
+
+    }
+
+  });
+
+
+  floorplan.classList.add(
+    "has-selection"
+  );
+
+
+  /* update information panel */
+
+  floorplanSectionName.textContent =
+    mapData.name;
+
+  floorplanCapacity.textContent =
+    mapData.capacity;
+
+  floorplanMinimum.textContent =
+    mapData.minimum;
+
+  floorplanDeposit.textContent =
+    mapData.deposit;
+
+  floorplanStatus.textContent =
+    mapData.status;
+
+
+  /* select same booth in builder */
+
+  const matchingButton =
+    document.querySelector(
+      `.section-select-button[data-section="${sectionKey}"]`
+    );
+
+
+  if (matchingButton) {
+
+    matchingButton.click();
+
+  }
+
+}
+
+
+/* =====================================
+   MAP CLICK EVENTS
+===================================== */
+
+mapZones.forEach((zone) => {
+
+  zone.addEventListener(
+    "click",
+    () => {
+
+      selectFloorplanSection(
+        zone.dataset.sectionMap
+      );
+
+    }
+  );
+
+
+  /* keyboard accessibility */
+
+  zone.addEventListener(
+    "keydown",
+    (event) => {
+
+      if (
+        event.key === "Enter" ||
+        event.key === " "
+      ) {
+
+        event.preventDefault();
+
+        selectFloorplanSection(
+          zone.dataset.sectionMap
+        );
+
+      }
+
+    }
+  );
+
+});
