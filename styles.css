@@ -2709,99 +2709,141 @@ footer {
   }
 }
 /* ========================================
-   INTERACTIVE CLUB FLOORPLAN
+   INTERACTIVE CLUB FLOORPLAN — REDESIGN
 ======================================== */
 
 .club-map {
-  margin-bottom: 70px;
+  margin-bottom: 78px;
 }
 
 .club-map-heading {
   display: grid;
-  grid-template-columns: 1.2fr 1fr;
-  gap: 28px;
-
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 36px;
+  align-items: end;
   margin-bottom: 28px;
 }
 
 .club-map-heading .section-kicker {
   grid-column: 1 / -1;
-  margin-bottom: -10px;
+  margin-bottom: -12px;
 }
 
 .club-map-heading h3 {
   margin: 0;
 
-  font-size: clamp(2.8rem, 5vw, 5rem);
-  line-height: 0.9;
-  letter-spacing: -0.06em;
+  font-size: clamp(3rem, 5.5vw, 5.5rem);
+  line-height: 0.88;
+  letter-spacing: -0.065em;
 }
 
 .club-map-heading > p:last-child {
-  max-width: 440px;
-
-  align-self: end;
+  max-width: 420px;
 
   font-size: 0.95rem;
-  line-height: 1.45;
+  line-height: 1.5;
 }
 
 
-/* FLOORPLAN SHELL */
+/* ========================================
+   FLOORPLAN ROOM
+======================================== */
 
 .floorplan {
   position: relative;
 
-  min-height: 720px;
+  min-height: 760px;
 
   overflow: hidden;
 
   border: 2px solid #151515;
-  border-radius: 28px;
+  border-radius: 30px;
 
   background:
-    linear-gradient(
-      rgba(255,255,255,0.35),
-      rgba(255,255,255,0.35)
+    radial-gradient(
+      circle at 50% 28%,
+      rgba(205, 144, 223, 0.2),
+      transparent 28%
     ),
-    repeating-linear-gradient(
-      90deg,
-      #f7eee9 0,
-      #f7eee9 48px,
-      #f1e6e1 48px,
-      #f1e6e1 50px
+    radial-gradient(
+      circle at 22% 58%,
+      rgba(236, 133, 170, 0.13),
+      transparent 24%
+    ),
+    radial-gradient(
+      circle at 78% 56%,
+      rgba(188, 145, 219, 0.15),
+      transparent 24%
+    ),
+    linear-gradient(
+      160deg,
+      #111012 0%,
+      #1b171c 45%,
+      #100f11 100%
     );
+
+  box-shadow:
+    inset 0 0 80px rgba(0, 0, 0, 0.55);
 }
 
 
-/* DJ BOOTH */
+/* SUBTLE ROOM LINES */
+
+.floorplan::before {
+  content: "";
+
+  position: absolute;
+  inset: 24px;
+
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 22px;
+
+  pointer-events: none;
+}
+
+
+/* ========================================
+   DJ BOOTH
+======================================== */
 
 .floorplan-stage {
   position: absolute;
-  top: 24px;
+  top: 30px;
   left: 50%;
 
-  transform: translateX(-50%);
+  width: 220px;
+  min-height: 66px;
 
-  width: 210px;
-  min-height: 64px;
+  transform: translateX(-50%);
 
   display: grid;
   place-items: center;
 
-  border: 2px solid #151515;
-  border-radius: 18px;
+  border: 1px solid rgba(255,255,255,0.38);
+  border-radius: 8px 8px 24px 24px;
 
-  background: #151515;
+  background:
+    linear-gradient(
+      180deg,
+      #2b252d,
+      #161318
+    );
+
   color: white;
 
-  font-size: 0.75rem;
+  box-shadow:
+    0 10px 28px rgba(0,0,0,0.4),
+    inset 0 -10px 20px rgba(0,0,0,0.25);
+
+  font-size: 0.7rem;
   font-weight: 900;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.16em;
 }
 
 
-/* ALL CLICKABLE ZONES */
+/* ========================================
+   CLICKABLE SECTIONS
+======================================== */
 
 .floorplan-zone {
   position: absolute;
@@ -2811,162 +2853,278 @@ footer {
   align-items: center;
   justify-content: center;
 
-  gap: 4px;
+  gap: 5px;
 
-  min-height: 74px;
+  padding: 12px;
 
-  padding: 12px 16px;
+  border: 1px solid rgba(255,255,255,0.34);
 
-  border: 2px solid #151515;
-  border-radius: 18px;
-
-  background: #fffaf7;
-  color: #151515;
+  color: white;
 
   font: inherit;
 
   cursor: pointer;
 
+  background:
+    linear-gradient(
+      145deg,
+      rgba(241, 204, 222, 0.18),
+      rgba(197, 159, 218, 0.12)
+    );
+
+  box-shadow:
+    inset 0 0 22px rgba(255,255,255,0.04),
+    0 8px 24px rgba(0,0,0,0.25);
+
+  backdrop-filter: blur(5px);
+
   transition:
-    transform 0.18s ease,
-    background 0.18s ease;
+    transform 0.2s ease,
+    background 0.2s ease,
+    border-color 0.2s ease,
+    opacity 0.2s ease;
 }
 
 .floorplan-zone span {
-  font-size: 0.72rem;
+  font-size: 0.7rem;
   font-weight: 900;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.07em;
 }
 
 .floorplan-zone small {
-  font-size: 0.56rem;
+  font-size: 0.54rem;
   font-weight: 800;
+
   opacity: 0.7;
 }
 
 
-/* ZONE POSITIONS */
+/* ========================================
+   BOOTH SHAPES
+======================================== */
 
 .floorplan-dj {
-  top: 112px;
-  left: 50%;
-
-  width: 240px;
-
-  transform: translateX(-50%);
-
-  background: #e5d3ec;
-}
-
-.floorplan-vip-left {
-  top: 210px;
-  left: 38px;
-
-  width: 190px;
-
-  background: #f1d6e3;
-}
-
-.floorplan-vip-right {
-  top: 210px;
-  right: 38px;
-
-  width: 190px;
-
-  background: #f1d6e3;
-}
-
-.floorplan-center {
-  top: 390px;
+  top: 118px;
   left: 50%;
 
   width: 260px;
+  min-height: 82px;
 
   transform: translateX(-50%);
 
-  background: #e8d8ef;
+  border-radius: 18px 18px 38px 38px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(196, 137, 217, 0.42),
+      rgba(123, 74, 148, 0.18)
+    );
 }
 
-.floorplan-main {
-  bottom: 38px;
+
+.floorplan-vip-left {
+  top: 240px;
+  left: 48px;
+
+  width: 180px;
+  min-height: 118px;
+
+  border-radius:
+    20px
+    54px
+    54px
+    20px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(233, 158, 190, 0.35),
+      rgba(175, 107, 150, 0.15)
+    );
+}
+
+
+.floorplan-vip-right {
+  top: 240px;
+  right: 48px;
+
+  width: 180px;
+  min-height: 118px;
+
+  border-radius:
+    54px
+    20px
+    20px
+    54px;
+
+  background:
+    linear-gradient(
+      225deg,
+      rgba(233, 158, 190, 0.35),
+      rgba(175, 107, 150, 0.15)
+    );
+}
+
+
+.floorplan-center {
+  top: 420px;
   left: 50%;
 
-  width: min(560px, 78%);
+  width: 285px;
+  min-height: 96px;
 
   transform: translateX(-50%);
 
-  background: #f4d7e5;
+  border-radius: 60px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(201, 165, 225, 0.38),
+      rgba(142, 102, 167, 0.16)
+    );
 }
 
 
-/* DANCE FLOOR */
+.floorplan-main {
+  bottom: 36px;
+  left: 50%;
+
+  width: min(600px, 78%);
+  min-height: 96px;
+
+  transform: translateX(-50%);
+
+  border-radius:
+    60px
+    60px
+    22px
+    22px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(240, 177, 204, 0.34),
+      rgba(170, 105, 139, 0.16)
+    );
+}
+
+
+/* ========================================
+   DANCE FLOOR
+======================================== */
 
 .dance-floor {
   position: absolute;
-  top: 285px;
+  top: 255px;
   left: 50%;
 
-  width: min(500px, 62%);
-  height: 160px;
+  width: min(440px, 46%);
+  height: 230px;
 
   transform: translateX(-50%);
 
   display: grid;
   place-items: center;
 
-  border: 2px dashed rgba(21,21,21,0.5);
-  border-radius: 28px;
+  border:
+    1px solid
+    rgba(255,255,255,0.16);
+
+  border-radius: 46%;
 
   background:
     radial-gradient(
       circle at 30% 30%,
-      rgba(230, 197, 236, 0.7),
-      transparent 36%
+      rgba(236, 145, 189, 0.18),
+      transparent 28%
     ),
     radial-gradient(
-      circle at 70% 70%,
-      rgba(244, 205, 223, 0.7),
-      transparent 38%
+      circle at 70% 60%,
+      rgba(191, 144, 221, 0.18),
+      transparent 30%
     ),
-    #fff8f5;
+    rgba(255,255,255,0.025);
 
-  font-size: 0.72rem;
+  box-shadow:
+    inset 0 0 55px rgba(209, 162, 223, 0.1);
+
+  color: rgba(255,255,255,0.62);
+
+  font-size: 0.68rem;
   font-weight: 900;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.18em;
 }
 
 
-/* BAR */
+/* ADD SMALL LIGHTS TO DANCE FLOOR */
+
+.dance-floor::before {
+  content: "•   •   •   •   •";
+
+  position: absolute;
+  top: 20px;
+
+  color: rgba(244, 189, 215, 0.55);
+
+  font-size: 0.8rem;
+  letter-spacing: 0.45em;
+}
+
+
+/* ========================================
+   MAIN BAR
+======================================== */
 
 .main-bar {
   position: absolute;
-  bottom: 145px;
+  bottom: 155px;
   left: 50%;
 
-  width: 300px;
-  min-height: 48px;
+  width: 310px;
+  min-height: 52px;
 
   transform: translateX(-50%);
 
   display: grid;
   place-items: center;
 
-  border: 2px solid #151515;
-  border-radius: 16px;
+  border:
+    1px solid
+    rgba(255,255,255,0.28);
 
-  background: #151515;
+  border-radius: 30px;
+
+  background:
+    linear-gradient(
+      180deg,
+      #302831,
+      #171417
+    );
+
   color: white;
 
-  font-size: 0.66rem;
+  box-shadow:
+    0 8px 24px rgba(0,0,0,0.35);
+
+  font-size: 0.65rem;
   font-weight: 900;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.16em;
 }
 
 
-/* SELECTED / HOVER STATE */
+/* ========================================
+   INTERACTION
+======================================== */
 
 .floorplan-zone:hover {
-  transform: scale(1.02);
+  border-color: rgba(255,255,255,0.75);
+}
+
+.floorplan-vip-left:hover,
+.floorplan-vip-right:hover {
+  transform: scale(1.025);
 }
 
 .floorplan-dj:hover,
@@ -2974,38 +3132,71 @@ footer {
 .floorplan-main:hover {
   transform:
     translateX(-50%)
-    scale(1.02);
+    scale(1.025);
 }
+
 
 .floorplan-zone.selected {
-  background: #151515;
-  color: white;
+  border-color: white;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(247, 200, 222, 0.72),
+      rgba(191, 150, 217, 0.6)
+    );
+
+  box-shadow:
+    0 0 0 2px rgba(255,255,255,0.12),
+    0 0 32px rgba(229, 161, 206, 0.35);
+
+  color: #ffffff;
 }
 
 
-/* DETAILS BAR */
+/* OPTIONAL DIM STATE ON OTHER ZONES */
+
+.floorplan.has-selection
+.floorplan-zone:not(.selected) {
+  opacity: 0.45;
+}
+
+
+/* ========================================
+   DETAILS PANEL
+======================================== */
 
 .floorplan-details {
   display: grid;
   grid-template-columns: 1.1fr 1.7fr;
-  gap: 28px;
+  gap: 30px;
 
-  padding: 22px 24px;
+  padding: 24px 26px;
 
-  border: 2px solid #151515;
+  border:
+    2px solid
+    #151515;
+
   border-top: 0;
-  border-radius: 0 0 24px 24px;
+
+  border-radius:
+    0
+    0
+    24px
+    24px;
 
   background: #fffaf7;
 }
 
-.floorplan-details h4 {
-  margin: 4px 0 0;
 
-  font-size: 1.8rem;
+.floorplan-details h4 {
+  margin: 5px 0 0;
+
+  font-size: 1.95rem;
   line-height: 1;
-  letter-spacing: -0.04em;
+  letter-spacing: -0.045em;
 }
+
 
 .floorplan-details small {
   font-size: 0.56rem;
@@ -3013,11 +3204,13 @@ footer {
   letter-spacing: 0.1em;
 }
 
+
 .floorplan-detail-stats {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 18px;
 }
+
 
 .floorplan-detail-stats div {
   display: flex;
@@ -3025,12 +3218,15 @@ footer {
   gap: 4px;
 }
 
+
 .floorplan-detail-stats strong {
   font-size: 0.9rem;
 }
 
 
-/* TABLET */
+/* ========================================
+   TABLET
+======================================== */
 
 @media (max-width: 850px) {
 
@@ -3043,17 +3239,21 @@ footer {
   }
 
   .floorplan {
-    min-height: 680px;
+    min-height: 720px;
   }
 
   .floorplan-vip-left {
     left: 20px;
-    width: 160px;
+    width: 155px;
   }
 
   .floorplan-vip-right {
     right: 20px;
-    width: 160px;
+    width: 155px;
+  }
+
+  .dance-floor {
+    width: 48%;
   }
 
   .floorplan-details {
@@ -3066,33 +3266,39 @@ footer {
 }
 
 
-/* MOBILE */
+/* ========================================
+   MOBILE
+======================================== */
 
 @media (max-width: 650px) {
 
   .club-map {
-    margin-bottom: 50px;
+    margin-bottom: 55px;
   }
 
   .floorplan {
-    min-height: 620px;
+    min-height: 650px;
   }
 
   .floorplan-stage {
-    width: 170px;
+    width: 175px;
   }
 
   .floorplan-dj {
+    top: 115px;
+
     width: 190px;
+    min-height: 75px;
   }
 
   .floorplan-vip-left,
   .floorplan-vip-right {
-    top: 210px;
-    width: 125px;
-    min-height: 70px;
+    top: 220px;
 
-    padding: 10px 8px;
+    width: 112px;
+    min-height: 100px;
+
+    padding: 8px;
   }
 
   .floorplan-vip-left {
@@ -3103,26 +3309,43 @@ footer {
     right: 12px;
   }
 
-  .dance-floor {
-    top: 300px;
+  .floorplan-zone span {
+    font-size: 0.58rem;
+  }
 
-    width: 74%;
-    height: 135px;
+  .floorplan-zone small {
+    font-size: 0.48rem;
+  }
+
+  .dance-floor {
+    top: 245px;
+
+    width: 52%;
+    height: 190px;
   }
 
   .floorplan-center {
-    top: 455px;
-    width: 200px;
+    top: 445px;
+
+    width: 185px;
+    min-height: 82px;
   }
 
   .main-bar {
-    bottom: 100px;
+    bottom: 103px;
+
     width: 210px;
   }
 
   .floorplan-main {
-    bottom: 18px;
-    width: 78%;
+    bottom: 20px;
+
+    width: 76%;
+    min-height: 74px;
+  }
+
+  .floorplan-details {
+    padding: 20px;
   }
 
   .floorplan-detail-stats {
